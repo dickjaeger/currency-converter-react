@@ -1,4 +1,5 @@
 .messageBox {
+    background-color: #ccff99;
     padding: 30px;
     border: solid 2px #999;
     border-radius: 5px;
@@ -7,12 +8,4 @@
 
 .messageBox--error {
     background-color: #f8b6b6;
-}
-
-.messageBox--success {
-    background-color: #ccff99;
-}
-
-.messageBox--hide {
-    display: none;
 }
