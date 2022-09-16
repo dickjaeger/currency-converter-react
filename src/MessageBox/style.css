@@ -1,0 +1,18 @@
+.messageBox {
+    padding: 30px;
+    border: solid 2px #999;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.messageBox--error {
+    background-color: #f8b6b6;
+}
+
+.messageBox--success {
+    background-color: #ccff99;
+}
+
+.messageBox--hide {
+    display: none;
+}

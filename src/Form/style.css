@@ -1,0 +1,52 @@
+.form__fieldset {
+    background-color: #fff;
+    border: solid 2px #999;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form__legend {
+    background-color: chocolate;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+.form__paragraph {
+    margin-left: 5%;
+}
+
+.form__list {
+    list-style-type: none;
+}
+
+.form__listItem {
+    margin: 20px;
+}
+
+.form__field {
+    border: solid 2px chocolate;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 15px;
+}
+
+.form__button {
+    display: block;
+    background-color: chocolate;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin: 20px auto 0;
+    width: 40%;
+}
+
+.form__button:hover {
+    background-color: #e07529;
+}
+
+.form__button:active {
+    background-color: #e48744;
+}
