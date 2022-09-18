@@ -3,6 +3,7 @@ import currenciesArray from '../currencies.js';
 import Fieldset from './Fieldset/index.js';
 import CurrenciesList from './CurrenciesList/index.js';
 import SelectCurrency from './SelectCurrency/index.js';
+import CurrentDate from './CurrentDate/index.js';
 import './style.css';
 
 const Form = ({ showResult, setError, setMessage }) => {
@@ -88,6 +89,7 @@ const Form = ({ showResult, setError, setMessage }) => {
                         </label>
                     </p>
                     <button className="form__button">Przelicz!</button>
+                    <CurrentDate />
                 </>}
             />
         </form>
