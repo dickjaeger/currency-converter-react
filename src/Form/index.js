@@ -1,110 +1,97 @@
 import { useState } from 'react'
+import currenciesArray from '../currencies.js';
+import Fieldset from './Fieldset/index.js';
+import CurrenciesList from './CurrenciesList/index.js';
+import SelectCurrency from './SelectCurrency/index.js';
 import './style.css';
 
-const Form = ({ calculateResult, resetMessageBox }) => {
-    const [exchangeRateEUR, setEUR] = useState(4.5);
-    const [ExchangeRateUSD, setUSD] = useState(4.0);
-    const [currency1, setCurrency1] = useState("EUR");
-    const [currency2, setCurrency2] = useState("PLN");
+const Form = ({ showResult, setError, setMessage }) => {
+    const [currencies, setCurrencies] = useState(currenciesArray);
+    const [currency1Name, setCurrency1] = useState("EUR");
+    const [currency2Name, setCurrency2] = useState("PLN");
     const [amount, setAmount] = useState("");
+
+    const resetMessageBox = () => {
+        setError(false);
+        setMessage("");
+    };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(exchangeRateEUR, ExchangeRateUSD, currency1, currency2, amount);
+
+        const currency1 = currencies.find(({name}) => name === currency1Name);
+        const currency2 = currencies.find(({name}) => name === currency2Name);
+
+        if (amount === "") {
+            setError(true);
+            setMessage("Podaj kwotę jaką chcesz wymienić!");
+            return;
+        };
+
+        if (!(currency1.value && currency1.value > 0) || !(currency2.value && currency2.value > 0)) {
+            setError(true);
+            setMessage("Podaj kurs, który jest większy od 0!");
+            return;
+        };
+
+        showResult(currency1, currency2, amount);
+    };
+
+    const onAmountChange = ({ target }) => {
+        setAmount(target.value);
+        resetMessageBox();
     };
 
     return (
         <form className="form" onSubmit={onFormSubmit}>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Kursy walut</legend>
-                <p className="form__paragraph">
-                    Wprowadź aktualny kurs waluty, którą chcesz przeliczać.
-                </p>
-                <ul className="form__list">
-                    <li className="form__listItem">
-                        <label>
-                            1 EUR =
-                            <input
-                                className="form__field"
-                                type="number"
-                                value={exchangeRateEUR}
-                                onChange={({ target }) => {
-                                    setEUR(target.value);
-                                    resetMessageBox();
-                                }}
-                                step="0.01"
-                                min="0"
-                            />
-                            PLN
-                        </label>
-                    </li>
-                    <li className="form__listItem">
-                        <label>
-                            1 USD =
-                            <input
-                                className="form__field"
-                                type="number"
-                                name="exchangeRateUSD"
-                                value={ExchangeRateUSD}
-                                onChange={({ target }) => {
-                                    setUSD(target.value);
-                                    resetMessageBox();
-                                }}
-                                step="0.01"
-                                min="0"
-                            />
-                            PLN
-                        </label>
-                    </li>
-                </ul>
-            </fieldset>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Kalkulator walut</legend>
-                <p className="form__paragraph">
-                    Chcę wymienić
-                    <select
-                        className="form__field"
-                        value={currency1}
-                        onChange={({ target }) => {
-                            setCurrency1(target.value);
-                            resetMessageBox();
-                        }}
-                    >
-                        <option>EUR</option>
-                        <option>USD</option>
-                        <option>PLN</option>
-                    </select>
-                    na
-                    <select
-                        className="form__field"
-                        value={currency2}
-                        onChange={({ target }) => {
-                            setCurrency2(target.value);
-                            resetMessageBox();
-                        }}
-                    >
-                        <option>PLN</option>
-                        <option>USD</option>
-                        <option>EUR</option>
-                    </select>
-                </p>
-                <p className="form__paragraph">
-                    <label>
-                        Kwota: <input
-                            className="form__field"
-                            type="number"
-                            value={amount}
-                            onChange={({ target }) => {
-                                setAmount(target.value);
-                                resetMessageBox();
-                            }}
+            <Fieldset
+                title="Kursy walut"
+                body={<>
+                    <p className="form__paragraph">
+                        Wprowadź aktualny kurs waluty, którą chcesz przeliczać.
+                    </p>
+                    <CurrenciesList
+                        currencies={currencies}
+                        setCurrencies={setCurrencies}
+                        resetMessageBox={resetMessageBox}
+                    />
+                </>}
+            />
+            <Fieldset
+                title="Kalkulator walut"
+                body={<>
+                    <p className="form__paragraph">
+                        Chcę wymienić
+                        <SelectCurrency
+                            currencies={currencies}
+                            currencyName={currency1Name}
+                            setCurrency={setCurrency1}
+                            resetMessageBox={resetMessageBox}
                         />
-                    </label>
-                </p>
-                <button className="form__button">Przelicz!</button>
-            </fieldset>
+                        na
+                        <SelectCurrency
+                            currencies={currencies}
+                            currencyName={currency2Name}
+                            setCurrency={setCurrency2}
+                            resetMessageBox={resetMessageBox}
+                        />
+
+                    </p>
+                    <p className="form__paragraph">
+                        <label>
+                            Kwota: <input
+                                className="form__field"
+                                type="number"
+                                value={amount}
+                                onChange={onAmountChange}
+                            />
+                        </label>
+                    </p>
+                    <button className="form__button">Przelicz!</button>
+                </>}
+            />
         </form>
     );
-}
+};
 
 export default Form;
