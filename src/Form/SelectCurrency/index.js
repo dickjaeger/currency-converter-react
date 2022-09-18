@@ -1,9 +1,9 @@
-const SelectCurrency = ({ currencies, currencyName, setCurrency, resetMessageBox }) => (
+const SelectCurrency = ({ currencies, currencyName, setCurrencyName, resetMessageBox }) => (
     <select
         className="form__field"
         value={currencyName}
         onChange={({ target }) => {
-            setCurrency(target.value);
+            setCurrencyName(target.value);
             resetMessageBox();
         }}
     >

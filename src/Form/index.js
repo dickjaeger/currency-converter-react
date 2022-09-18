@@ -7,8 +7,8 @@ import './style.css';
 
 const Form = ({ showResult, setError, setMessage }) => {
     const [currencies, setCurrencies] = useState(currenciesArray);
-    const [currency1Name, setCurrency1] = useState("EUR");
-    const [currency2Name, setCurrency2] = useState("PLN");
+    const [currency1Name, setCurrency1Name] = useState("EUR");
+    const [currency2Name, setCurrency2Name] = useState("PLN");
     const [amount, setAmount] = useState("");
 
     const resetMessageBox = () => {
@@ -65,14 +65,14 @@ const Form = ({ showResult, setError, setMessage }) => {
                         <SelectCurrency
                             currencies={currencies}
                             currencyName={currency1Name}
-                            setCurrency={setCurrency1}
+                            setCurrencyName={setCurrency1Name}
                             resetMessageBox={resetMessageBox}
                         />
                         na
                         <SelectCurrency
                             currencies={currencies}
                             currencyName={currency2Name}
-                            setCurrency={setCurrency2}
+                            setCurrencyName={setCurrency2Name}
                             resetMessageBox={resetMessageBox}
                         />
 
