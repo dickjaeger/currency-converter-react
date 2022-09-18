@@ -20,8 +20,8 @@ const Form = ({ showResult, setError, setMessage }) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        const currency1 = currencies.find(({name}) => name === currency1Name);
-        const currency2 = currencies.find(({name}) => name === currency2Name);
+        const currency1 = currencies.find(({ name }) => name === currency1Name);
+        const currency2 = currencies.find(({ name }) => name === currency2Name);
 
         if (amount === "") {
             setError(true);
@@ -48,6 +48,7 @@ const Form = ({ showResult, setError, setMessage }) => {
             <Fieldset
                 title="Kursy walut"
                 body={<>
+                    <CurrentDate />
                     <p className="form__paragraph">
                         Wprowadź aktualny kurs waluty, którą chcesz przeliczać.
                     </p>
@@ -89,7 +90,6 @@ const Form = ({ showResult, setError, setMessage }) => {
                         </label>
                     </p>
                     <button className="form__button">Przelicz!</button>
-                    <CurrentDate />
                 </>}
             />
         </form>

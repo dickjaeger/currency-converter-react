@@ -6,7 +6,7 @@ const CurrentDate = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentDate(new Date()); 
+            setCurrentDate(new Date());
         }, 1000);
 
         return () => {
@@ -16,7 +16,17 @@ const CurrentDate = () => {
 
     return (
         <div className="date">
-            {date.toLocaleString()}
+            Dzisiaj jest {date.toLocaleString('pl-PL', {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+            })}
+            {", "}
+            {date.toLocaleString('pl-PL', {
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+            })}
         </div>
     );
 };
