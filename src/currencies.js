@@ -11,6 +11,10 @@ const currencies = [
     name: "PLN",
     value: 1,
     },
+    {
+    name: "GBP",
+    value: 5.44,
+    },
 ];
 
 export default currencies;
