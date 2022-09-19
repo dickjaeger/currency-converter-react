@@ -1,11 +1,11 @@
-import './style.css';
+import { MessageBox as StyledMessageBox } from "./styled";
 
 const MessageBox = ({ message, error }) => {
     if (message !== "") {
         return (
-            <div className={`messageBox${error ? " messageBox--error" : ""}`}>
+            <StyledMessageBox error={error}>
                 {message}
-            </div>
+            </StyledMessageBox>
         )
     }
 }
