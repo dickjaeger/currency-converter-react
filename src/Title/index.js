@@ -1,7 +1,7 @@
-import './style.css';
+import { Header } from "./styled";
 
 const Title = () => (
-    <h1 className="title">Kantor walut</h1>
+    <Header>Kantor walut</Header>
 )
 
 export default Title;
