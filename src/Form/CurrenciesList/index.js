@@ -1,3 +1,5 @@
+import { List, ListItem, FormField } from '../styled.js';
+
 const CurrenciesList = ({ currencies, setCurrencies, resetMessageBox }) => {
     const onChange = (name, newValue) => {
         setCurrencies(currencies.map(currency => {
@@ -14,18 +16,17 @@ const CurrenciesList = ({ currencies, setCurrencies, resetMessageBox }) => {
     };
 
     return (
-        <ul className="form__list">
+        <List>
             {currencies.map(currency => {
                 if (currency.name === "PLN") {
                     return;
                 };
 
                 return (
-                    <li key={currency.name} className="form__listItem">
+                    <ListItem key={currency.name}>
                         <label>
                             1 {currency.name} =
-                            <input
-                                className="form__field"
+                            <FormField
                                 type="number"
                                 value={currency.value}
                                 onChange={({ target }) => {
@@ -36,10 +37,10 @@ const CurrenciesList = ({ currencies, setCurrencies, resetMessageBox }) => {
                             />
                             PLN
                         </label>
-                    </li>
+                    </ListItem>
                 );
             })}
-        </ul>
+        </List>
     );
 };
 

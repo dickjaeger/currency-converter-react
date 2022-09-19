@@ -1,38 +1,40 @@
-.form__fieldset {
+import styled from "styled-components";
+
+export const Fieldset = styled.fieldset`
     background-color: #fff;
     border: solid 2px #999;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
-}
+`
 
-.form__legend {
+export const Legend = styled.legend`
     background-color: chocolate;
     border-radius: 5px;
     padding: 10px;
     color: #fff;
-}
+`
 
-.form__paragraph {
+export const FormRow = styled.p`
     margin-left: 5%;
-}
+`
 
-.form__list {
+export const List = styled.ul`
     list-style-type: none;
-}
+`
 
-.form__listItem {
+export const ListItem = styled.li`
     margin: 20px;
-}
+`
 
-.form__field {
+export const FormField = styled.input`
     border: solid 2px chocolate;
     border-radius: 5px;
     padding: 5px;
     margin: 0 15px;
-}
+`
 
-.form__button {
+export const Button = styled.button`
     display: block;
     background-color: chocolate;
     color: #fff;
@@ -41,12 +43,12 @@
     padding: 10px;
     margin: 20px auto 0;
     width: 40%;
-}
 
-.form__button:hover {
-    background-color: #e07529;
-}
+    &:hover {
+        background-color: #e07529;
+    }
 
-.form__button:active {
-    background-color: #e48744;
-}
+    &:active {
+        background-color: #e48744;
+    }
+`

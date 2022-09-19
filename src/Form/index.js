@@ -4,7 +4,7 @@ import Fieldset from './Fieldset/index.js';
 import CurrenciesList from './CurrenciesList/index.js';
 import SelectCurrency from './SelectCurrency/index.js';
 import CurrentDate from './CurrentDate/index.js';
-import './style.css';
+import { FormRow, FormField, Button } from './styled.js';
 
 const Form = ({ showResult, setError, setMessage }) => {
     const [currencies, setCurrencies] = useState(currenciesArray);
@@ -44,14 +44,14 @@ const Form = ({ showResult, setError, setMessage }) => {
     };
 
     return (
-        <form className="form" onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit}>
             <Fieldset
                 title="Kursy walut"
                 body={<>
                     <CurrentDate />
-                    <p className="form__paragraph">
+                    <FormRow>
                         Wprowadź aktualny kurs waluty, którą chcesz przeliczać.
-                    </p>
+                    </FormRow>
                     <CurrenciesList
                         currencies={currencies}
                         setCurrencies={setCurrencies}
@@ -62,7 +62,7 @@ const Form = ({ showResult, setError, setMessage }) => {
             <Fieldset
                 title="Kalkulator walut"
                 body={<>
-                    <p className="form__paragraph">
+                    <FormRow>
                         Chcę wymienić
                         <SelectCurrency
                             currencies={currencies}
@@ -78,18 +78,17 @@ const Form = ({ showResult, setError, setMessage }) => {
                             resetMessageBox={resetMessageBox}
                         />
 
-                    </p>
-                    <p className="form__paragraph">
+                    </FormRow>
+                    <FormRow>
                         <label>
-                            Kwota: <input
-                                className="form__field"
+                            Kwota: <FormField
                                 type="number"
                                 value={amount}
                                 onChange={onAmountChange}
                             />
                         </label>
-                    </p>
-                    <button className="form__button">Przelicz!</button>
+                    </FormRow>
+                    <Button>Przelicz!</Button>
                 </>}
             />
         </form>

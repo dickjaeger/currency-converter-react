@@ -1,8 +1,10 @@
-const Fieldset = ({title, body}) => (
-    <fieldset className="form__fieldset">
-        <legend className="form__legend">{title}</legend>
+import { Fieldset as StyledFieldset, Legend } from '../styled.js';
+
+const Fieldset = ({ title, body }) => (
+    <StyledFieldset>
+        <Legend>{title}</Legend>
         {body}
-    </fieldset>
+    </StyledFieldset>
 );
 
 export default Fieldset;

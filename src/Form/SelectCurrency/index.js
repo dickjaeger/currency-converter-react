@@ -1,6 +1,8 @@
+import { FormField } from '../styled.js';
+
 const SelectCurrency = ({ currencies, currencyName, setCurrencyName, resetMessageBox }) => (
-    <select
-        className="form__field"
+    <FormField
+        as="select"
         value={currencyName}
         onChange={({ target }) => {
             setCurrencyName(target.value);
@@ -10,7 +12,7 @@ const SelectCurrency = ({ currencies, currencyName, setCurrencyName, resetMessag
         {currencies.map(({ name }) => (
             <option key={name}>{name}</option>
         ))}
-    </select>
+    </FormField>
 )
 
 export default SelectCurrency;

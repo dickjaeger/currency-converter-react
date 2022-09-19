@@ -1,11 +1,11 @@
 import useCurrentDate from './useCurrentDate.js';
-import './style.css';
+import { Div } from './styled.js'
 
 const CurrentDate = () => {
     const date = useCurrentDate();
-    
+
     return (
-        <div className="date">
+        <Div>
             Dzisiaj jest {date.toLocaleString('pl-PL', {
                 weekday: "long",
                 day: "numeric",
@@ -17,7 +17,7 @@ const CurrentDate = () => {
                 minute: "2-digit",
                 second: "2-digit",
             })}
-        </div>
+        </Div>
     );
 };
 
