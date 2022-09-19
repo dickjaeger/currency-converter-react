@@ -1,19 +1,9 @@
-import { useState, useEffect } from 'react';
+import useCurrentDate from './useCurrentDate.js';
 import './style.css';
 
 const CurrentDate = () => {
-    const [date, setCurrentDate] = useState(new Date());
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentDate(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    });
-
+    const date = useCurrentDate();
+    
     return (
         <div className="date">
             Dzisiaj jest {date.toLocaleString('pl-PL', {
