@@ -10,7 +10,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   const calculateResult = (exchangeRate1, exchangeRate2, amount) => {
-    return exchangeRate2 / exchangeRate1 * amount;
+    return +exchangeRate2 / +exchangeRate1 * +amount;
   };
 
   const showResult = (exchangeRate1, exchangeRate2, amount, currency2Name) => {

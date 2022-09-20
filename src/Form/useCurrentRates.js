@@ -1,29 +1,36 @@
 import { useState, useEffect } from 'react';
 
 export const useCurrentRates = () => {
-    const [currentRates, setCurrentRates] = useState({});
-    const [ratesUpdateDate, setRatesUpdateDate] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const [RatesState, setCurrentRates] = useState({
+        rates: {},
+        date: "",
+        loading: true,
+        error: "",
+    });
 
-    useEffect(() => {
+
+    useEffect((RatesState) => {
         fetch("https://api.exchangerate.host/latest?base=PLN&symbols=USD,EUR,CZK,PLN,GBP")
             .then(response => response.json())
             .then(result => {
                 if (result.error) {
                     throw new Error();
                 };
-                setCurrentRates(result.rates);
-                setRatesUpdateDate(result.date);
-                setTimeout(() => setLoading(false), 1000);
+
+                setTimeout(() => setCurrentRates({
+                    rates: result.rates,
+                    date: result.date,
+                    loading: false,
+                }), 1000);
             })
             .catch(() => {
-                setError(
-                    "Nie udało się pobrać kursów walut. Sprawdź połączenie z internetem i spróbuj ponownie!"
-                    );
-                    setTimeout(() => setLoading(false), 1000);
+                setTimeout(() => setCurrentRates({
+                    ...RatesState,
+                    error: "Nie udało się pobrać kursów walut. Sprawdź połączenie z internetem i spróbuj ponownie!",
+                    loading: false,
+                }), 1000);
             });
     }, []);
 
-    return [currentRates, ratesUpdateDate, loading, error];
+    return [RatesState];
 }
