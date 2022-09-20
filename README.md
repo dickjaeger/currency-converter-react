@@ -52,7 +52,7 @@
 
   
 
-- By entering the exchange rates you need and the amount, you can count how much money you will get in another currency.
+- Select the currencies you want to convert, enter the amount, and the calculator will automatically calculate the result due using the latest exchange rate!
 
   
 
@@ -71,18 +71,21 @@
 
 - CSS
 
-- BEM convention
+- Styled Components
+
+- Downloading data from API
 
 
-  
 
 ## Features
 
   
-
-- Entering exchange rates
-
 - Converting a given amount to a different currency
+
+- Automatic download of the latest exchange rates
+
+- Live clock
+
 
 
 
