@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import currenciesArray from '../currencies.js';
-import Fieldset from './Fieldset/index.js';
-import CurrenciesList from './CurrenciesList/index.js';
+import { useCurrentRates } from './useCurrentRates'
 import SelectCurrency from './SelectCurrency/index.js';
 import CurrentDate from './CurrentDate/index.js';
-import { FormRow, FormField, Button } from './styled.js';
+import UpdateDateInfo from './UpdateDateInfo';
+import StateContainer from './ErrorContainer';
+import { Form as StyledForm, FormRow, FormField, Button } from './styled.js';
 
 const Form = ({ showResult, setError, setMessage }) => {
-    const [currencies, setCurrencies] = useState(currenciesArray);
+    const [currentRates, updateRatesDate, loading, error] = useCurrentRates();
     const [currency1Name, setCurrency1Name] = useState("EUR");
     const [currency2Name, setCurrency2Name] = useState("PLN");
     const [amount, setAmount] = useState("");
@@ -20,59 +20,44 @@ const Form = ({ showResult, setError, setMessage }) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        const currency1 = currencies.find(({ name }) => name === currency1Name);
-        const currency2 = currencies.find(({ name }) => name === currency2Name);
+        const exchangeRate1 = currentRates[currency1Name];
+        const exchangeRate2 = currentRates[currency2Name];
 
         if (amount === "") {
             setError(true);
             setMessage("Podaj kwotę jaką chcesz wymienić!");
             return;
         };
-
-        if (!(currency1.value && currency1.value > 0) || !(currency2.value && currency2.value > 0)) {
+        if (amount < 0) {
             setError(true);
-            setMessage("Podaj kurs, który jest większy od 0!");
+            setMessage("Podaj kwotę większą od 0!");
             return;
         };
 
-        showResult(currency1, currency2, amount);
+        showResult(exchangeRate1, exchangeRate2, amount, currency2Name);
     };
 
     const onAmountChange = ({ target }) => {
         setAmount(target.value);
         resetMessageBox();
     };
-
+    console.log(loading);
     return (
-        <form onSubmit={onFormSubmit}>
-            <Fieldset
-                title="Kursy walut"
-                body={<>
-                    <CurrentDate />
-                    <FormRow>
-                        Wprowadź aktualny kurs waluty, którą chcesz przeliczać.
-                    </FormRow>
-                    <CurrenciesList
-                        currencies={currencies}
-                        setCurrencies={setCurrencies}
-                        resetMessageBox={resetMessageBox}
-                    />
-                </>}
-            />
-            <Fieldset
-                title="Kalkulator walut"
-                body={<>
+        <StyledForm onSubmit={onFormSubmit}>
+            <CurrentDate />
+            {!error && !loading
+                ? <>
                     <FormRow>
                         Chcę wymienić
                         <SelectCurrency
-                            currencies={currencies}
+                            currencies={Object.keys(currentRates)}
                             currencyName={currency1Name}
                             setCurrencyName={setCurrency1Name}
                             resetMessageBox={resetMessageBox}
                         />
                         na
                         <SelectCurrency
-                            currencies={currencies}
+                            currencies={Object.keys(currentRates)}
                             currencyName={currency2Name}
                             setCurrencyName={setCurrency2Name}
                             resetMessageBox={resetMessageBox}
@@ -85,13 +70,15 @@ const Form = ({ showResult, setError, setMessage }) => {
                                 type="number"
                                 value={amount}
                                 onChange={onAmountChange}
-                            />
+                            /> {currency1Name}
                         </label>
                     </FormRow>
-                    <Button>Przelicz!</Button>
-                </>}
-            />
-        </form>
+                </>
+                : <StateContainer error={error}/>
+            }
+            <Button>Przelicz!</Button>
+            <UpdateDateInfo updateRatesDate={updateRatesDate} />
+        </StyledForm>
     );
 };
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Fieldset = styled.fieldset`
+export const Form = styled.form`
+    text-align: center;
     background-color: #fff;
     border: solid 2px #999;
     border-radius: 5px;

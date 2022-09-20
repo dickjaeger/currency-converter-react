@@ -9,8 +9,8 @@ const SelectCurrency = ({ currencies, currencyName, setCurrencyName, resetMessag
             resetMessageBox();
         }}
     >
-        {currencies.map(({ name }) => (
-            <option key={name}>{name}</option>
+        {currencies.map(currency => (
+            <option key={currency}>{currency}</option>
         ))}
     </FormField>
 )

@@ -10,15 +10,15 @@ function App() {
   const [message, setMessage] = useState("");
 
   const calculateResult = (exchangeRate1, exchangeRate2, amount) => {
-    return exchangeRate1 / exchangeRate2 * amount;
+    return exchangeRate2 / exchangeRate1 * amount;
   };
 
-  const showResult = (currency1, currency2, amount) => {
+  const showResult = (exchangeRate1, exchangeRate2, amount, currency2Name) => {
     setError(false);
     setMessage(
       `Dostaniesz dokładnie 
-      ${calculateResult(currency1.value, currency2.value, amount).toFixed(2)}
-      ${currency2.name}`
+      ${calculateResult(exchangeRate1, exchangeRate2, amount).toFixed(2)}
+      ${currency2Name}`
     );
   };
 
