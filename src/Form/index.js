@@ -73,11 +73,12 @@ const Form = ({ showResult, setError, setMessage }) => {
                             /> {currency1Name}
                         </label>
                     </FormRow>
+                    <Button>Przelicz!</Button>
+                    <UpdateDateInfo updateRatesDate={updateRatesDate} />
                 </>
-                : <StateContainer error={error}/>
+                : <StateContainer error={error} />
             }
-            <Button>Przelicz!</Button>
-            <UpdateDateInfo updateRatesDate={updateRatesDate} />
+
         </StyledForm>
     );
 };
