@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css';
-import Container from './Container/index.js'
+import { Container } from "./styled";
 import Title from './Title/index.js'
 import Form from './Form/index.js'
 import MessageBox from './MessageBox/index.js'
