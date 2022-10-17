@@ -6,4 +6,5 @@ export const Header = styled.h1`
     color: white;
     border-radius: 5px;
     background-color: chocolate;
+    margin-top: 10vh;
 `

@@ -8,7 +8,7 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
-  background-image: url("background-image.jpg");
+  background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("background-image.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
