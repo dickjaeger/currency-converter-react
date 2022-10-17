@@ -6,7 +6,7 @@
 
   
 
-> Live demo [_here_](https://dickjaeger.github.io/currency-converter-react/).
+> Live demo [_here_](https://wojciech-leksza.github.io/currency-converter-react/).
 
   
 
@@ -157,4 +157,4 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
   
 
-- Created by [Wojciech Leksza](https://github.com/dickjaeger) - feel free to contact me!
+- Created by [Wojciech Leksza](https://github.com/wojciech-leksza) - feel free to contact me!
