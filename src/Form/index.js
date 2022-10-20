@@ -55,23 +55,22 @@ const Form = ({ showResult, setError, setMessage }) => {
                             setCurrencyName={setCurrency1Name}
                             resetMessageBox={resetMessageBox}
                         />
-                        na
-                        <SelectCurrency
-                            currencies={Object.keys(RatesState.rates)}
-                            currencyName={currency2Name}
-                            setCurrencyName={setCurrency2Name}
-                            resetMessageBox={resetMessageBox}
-                        />
-
+                            na
+                            <SelectCurrency
+                                currencies={Object.keys(RatesState.rates)}
+                                currencyName={currency2Name}
+                                setCurrencyName={setCurrency2Name}
+                                resetMessageBox={resetMessageBox}
+                            />
                     </FormRow>
                     <FormRow>
-                        <label>
-                            Kwota: <FormField
+                            Kwota: 
+                            <FormField
                                 type="number"
                                 value={amount}
                                 onChange={onAmountChange}
-                            /> {currency1Name}
-                        </label>
+                            /> 
+                            {currency1Name}
                     </FormRow>
                     <Button>Przelicz!</Button>
                     <UpdateDateInfo updateRatesDate={RatesState.date} />

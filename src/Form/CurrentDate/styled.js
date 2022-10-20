@@ -7,5 +7,5 @@ export const Container = styled.div`
     margin-top: -10px;
     max-width: 100%;
     text-align: right;
-    color: #888;
+    color: #006d77;
 `

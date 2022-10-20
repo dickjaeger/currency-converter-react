@@ -5,5 +5,5 @@ export const Container = styled.div`
     margin-bottom: -30px;
     padding: 10px;
     font-size: small;
-    color: #888;
+    color: #006d77;
 `

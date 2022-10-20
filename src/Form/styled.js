@@ -2,54 +2,40 @@ import styled from "styled-components";
 
 export const Form = styled.form`
     text-align: center;
-    background-color: #fff;
-    border: solid 2px #999;
-    border-radius: 5px;
+    background-color: #83c5be;
+    border-radius: 2px;
     padding: 20px;
     margin-bottom: 20px;
-`
-
-export const Legend = styled.legend`
-    background-color: chocolate;
-    border-radius: 5px;
-    padding: 10px;
-    color: #fff;
+    box-shadow: 7px 7px 9px -11px rgba(43, 45, 66, 1);
 `
 
 export const FormRow = styled.p`
-    margin-left: 5%;
-`
-
-export const List = styled.ul`
-    list-style-type: none;
-`
-
-export const ListItem = styled.li`
-    margin: 20px;
+    margin: 15px;
 `
 
 export const FormField = styled.input`
-    border: solid 2px chocolate;
-    border-radius: 5px;
+    border: solid 2px #e29578;
+    border-radius: 2px;
     padding: 5px;
     margin: 0 15px;
+    box-shadow: 7px 7px 9px -11px rgba(43, 45, 66, 1);
 `
 
 export const Button = styled.button`
     display: block;
-    background-color: chocolate;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #e29578;
+    border-radius: 2px;
     border: none;
     padding: 10px;
     margin: 20px auto 0;
     width: 40%;
+    box-shadow: 7px 7px 9px -11px rgba(43, 45, 66, 1);
 
     &:hover {
-        background-color: #e07529;
+        filter: brightness(1.05);
     }
 
     &:active {
-        background-color: #e48744;
+        filter: brightness(1.1);
     }
 `

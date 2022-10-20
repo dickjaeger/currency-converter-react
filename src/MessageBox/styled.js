@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
 export const MessageBox = styled.div`
-    background-color: #ccff99;
+    background-color: #83c5be;
     padding: 30px;
-    border: solid 2px #999;
-    border-radius: 5px;
+    border-radius: 2px;
     text-align: center;
+    box-shadow: 7px 7px 9px -11px rgba(43, 45, 66, 1);
 
     ${({ error }) => error && css`
         background-color: #f8b6b6;
